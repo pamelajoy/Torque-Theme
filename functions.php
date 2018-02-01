@@ -184,7 +184,7 @@ add_filter( 'login_headertitle', 'tq_theme_prefix_my_login_logo_url_title' );
 /**
  * TGM Plugin Activation
  */
-require_once(get_template_directory() . '/classes/vendor/tgm-plugin-activation.php');
+require_once(get_template_directory() . '/inc/tgm-plugin-activation.php');
 
 /**
  * Load Jetpack compatibility file.
@@ -231,6 +231,7 @@ if (! function_exists(tq_theme_prefix_vendor_script_init) ){
 
   }
 }
+add_action( 'wp_enqueue_scripts', 'tq_theme_prefix_vendor_script_init' );
 
 /*
  * Allow SVG Upload
