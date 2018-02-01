@@ -4,19 +4,7 @@ module.exports = function(grunt) {
   grunt.initConfig({		
     pkg: grunt.file.readJSON('package.json'),		
 		
-    // Javascript Tasks		
-    jshint: {		
-      files: 'js/*.js',		
-      options: {		
-        // options here to override JSHint defaults		
-        globals: {		
-          jQuery: true,		
-          console: true,		
-          module: true,		
-          document: true		
-        }		
-      }		
-    },		
+    // Javascript Tasks	
     uglify: {		
       options: {		
         banner: '/*\n <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> \n*/\n'		
@@ -59,21 +47,20 @@ module.exports = function(grunt) {
       },		
       // for stylesheets, watch css and scss files 		
       // run sass then autoprefixer and cssmin
-      files: ['**/*.css', '**/*.scss'], 		
+      files: ['*.css', 'sass/*.scss'], 		
       tasks: ['sass', 'autoprefixer', 'cssmin'],		
 		
-      // for scripts, run jshint and uglify 		
+      // for scripts, run uglify 		
       scripts: { 		
         files: '**/*.js',		
-        tasks: ['jshint', 'uglify'] 		
+        tasks: ['uglify'] 		
       } 		
     }		
 		
   });		
 		
   // Load the plugin that provides the "uglify" task, etc.		
-  grunt.loadNpmTasks('grunt-contrib-uglify');		
-  grunt.loadNpmTasks('grunt-contrib-jshint');		
+  grunt.loadNpmTasks('grunt-contrib-uglify');	
   grunt.loadNpmTasks('grunt-contrib-sass');		
   grunt.loadNpmTasks('grunt-autoprefixer');		
   grunt.loadNpmTasks('grunt-contrib-cssmin');		
