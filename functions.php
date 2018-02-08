@@ -116,7 +116,7 @@ add_action( 'widgets_init', 'tq_theme_prefix_widgets_init' );
 /**
  * Enqueue scripts and styles.
  */
-if (! function_exists(tq_theme_prefix_custom_script_init) ){  
+if (! function_exists('tq_theme_prefix_custom_script_init') ){  
   function tq_theme_prefix_custom_script_init(){
 
   	// navigation.js
@@ -160,21 +160,21 @@ require get_template_directory() . '/inc/customizer.php';
  * Custom login
  */
 // Add custom css
-if (! function_exists(tq_theme_prefix_my_custom_login) ){
+if (! function_exists('tq_theme_prefix_my_custom_login') ){
 	function tq_theme_prefix_my_custom_login() {
 		echo '<link rel="stylesheet" type="text/css" href="' . get_bloginfo('stylesheet_directory') . '/custom-login-style.css" />';
 	}
 }
 add_action('login_head', 'tq_theme_prefix_my_custom_login');
 // Link the logo to the home of our website
-if (! function_exists(tq_theme_prefix_my_login_logo_url) ){
+if (! function_exists('tq_theme_prefix_my_login_logo_url') ){
 	function tq_theme_prefix_my_login_logo_url() {
 		return get_bloginfo( 'url' );
 	}
 }
 add_filter( 'login_headerurl', 'tq_theme_prefix_my_login_logo_url' );
 // Change the title text
-if(! function_exists(tq_theme_prefix_my_login_logo_url_title) ){
+if(! function_exists('tq_theme_prefix_my_login_logo_url_title') ){
 	function tq_theme_prefix_my_login_logo_url_title() {
 		return 'Torque Theme';
 	}
@@ -193,50 +193,50 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
 
-/**
- * Bootstrap
- */
-if (! function_exists(tq_theme_prefix_vendor_script_init) ){
-  function tq_theme_prefix_vendor_script_init() {
+// /**
+//  * Bootstrap
+//  */
+// if (! function_exists(tq_theme_prefix_vendor_script_init) ){
+//   function tq_theme_prefix_vendor_script_init() {
 
-    $bootstrap = apply_filters('torque_include_bootstrap', 0);
+//     $bootstrap = apply_filters('torque_include_bootstrap', 0);
 
-    if ( $bootstrap ){
+//     if ( $bootstrap ){
 
-    	// Boostrap requires latest version of jQuery
-	  	wp_deregister_script('jquery');
-	  	wp_register_script('jquery', 'https://code.jquery.com/jquery-3.2.1.min.js');
-	  	wp_enqueue_script('jquery');
+//     	// Boostrap requires latest version of jQuery
+// 	  	wp_deregister_script('jquery');
+// 	  	wp_register_script('jquery', 'https://code.jquery.com/jquery-3.2.1.min.js');
+// 	  	wp_enqueue_script('jquery');
 
-	  	// Popper is a Boostrap dependency
-	  	wp_register_script('popper', 'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js', array( 'jquery'
-	  	 ), '', true);
-	  	wp_enqueue_script('popper');
+// 	  	// Popper is a Boostrap dependency
+// 	  	wp_register_script('popper', 'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js', array( 'jquery'
+// 	  	 ), '', true);
+// 	  	wp_enqueue_script('popper');
 
-	  	// Boostrap minified javascript
-	  	wp_register_script('bootstrap', 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js', array( 'jquery' ), '', true);
-	  	wp_enqueue_script('bootstrap');
+// 	  	// Boostrap minified javascript
+// 	  	wp_register_script('bootstrap', 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js', array( 'jquery' ), '', true);
+// 	  	wp_enqueue_script('bootstrap');
 
-	  	// Boostrap uses the Font Awesome icon library
-	  	wp_register_style( 'font-awesome', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' );
-	  	wp_enqueue_style( 'font-awesome' );
+// 	  	// Boostrap uses the Font Awesome icon library
+// 	  	wp_register_style( 'font-awesome', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' );
+// 	  	wp_enqueue_style( 'font-awesome' );
 	  	
-	  	// Boostrap minified css
-	  	wp_register_style( 'bootstrap', 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css' );
-	  	wp_enqueue_style( 'bootstrap' );
+// 	  	// Boostrap minified css
+// 	  	wp_register_style( 'bootstrap', 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css' );
+// 	  	wp_enqueue_style( 'bootstrap' );
 
-	  	// Bootstrapify the WordPress Menu
-			require_once(get_template_directory() . '/inc/bs4navwalker.php');
-	  }
+// 	  	// Bootstrapify the WordPress Menu
+// 			require_once(get_template_directory() . '/inc/bs4navwalker.php');
+// 	  }
 
-  }
-}
-add_action( 'wp_enqueue_scripts', 'tq_theme_prefix_vendor_script_init' );
+//   }
+// }
+// add_action( 'wp_enqueue_scripts', 'tq_theme_prefix_vendor_script_init' );
 
 /*
  * Allow SVG Upload
  */
-if ( ! function_exists(tq_theme_prefix_mime_types) ) :
+if ( ! function_exists('tq_theme_prefix_mime_types') ) :
   function tq_theme_prefix_mime_types($mimes) {
     $mimes['svg'] = 'image/svg+xml';
     return $mimes;
