@@ -231,7 +231,7 @@ if (! function_exists('tq_vendor_script_init') ){
 
   }
 }
-add_action( 'wp_enqueue_scripts', 'tq_vendor_script_init' );
+add_action( 'wp_enqueue_scripts', 'tq_vendor_script_init', 0 );
 
 /*
  * Allow SVG Upload
